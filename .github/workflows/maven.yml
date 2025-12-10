@@ -1,0 +1,27 @@
+name : Java -CI-CD Maven
+On :
+  push :
+    workflow_dispatch:
+jobs :
+  build :
+    runs-on : ubuntu-latest
+    steps :
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17 and enable Maven cache
+        uses: actions/setup-java@v4
+          with:
+            distribution: temurin
+              java-version: '17'
+              cache: 'maven'
+      - name: Run Maven tests (Smoke)
+          run: mvn -B clean test "-Dtest=runners.TestRunner" "-Dcucumber.filter.tags=@Smoke"
+      - name: Upload Surefire / Cucumber reports
+          if: always()
+          uses: actions/upload-artifact@v4
+          with:
+            name: test-reports
+            path: |
+              **/target/surefire-reports/**
+              **/target/cucumber-reports/**
