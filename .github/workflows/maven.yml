@@ -11,7 +11,7 @@ jobs :
 
       - name: Set up JDK 17 and enable Maven cache
         uses: actions/setup-java@v4
-          with:
+        with:
             distribution: temurin
               java-version: '17'
               cache: 'maven'
