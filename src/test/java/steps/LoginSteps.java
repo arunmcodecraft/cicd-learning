@@ -3,6 +3,7 @@ package steps;
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
 public class LoginSteps {
@@ -11,7 +12,17 @@ public class LoginSteps {
 
     @Given("I launch the browser")
     public void i_launch_the_browser() {
-        driver = new ChromeDriver();
+
+        ChromeOptions options = new ChromeOptions();
+
+        // These flags are required for GitHub Actions (Linux)
+        options.addArguments("--headless=new");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--window-size=1920,1080");
+
+        driver = new ChromeDriver(options);
     }
 
     @When("I open Google")
