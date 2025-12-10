@@ -1,0 +1,5 @@
+runners\TestRunner.class
+steps\LoginSteps.class
+runners\RegressionRunner.class
+runners\SanityRunner.class
+runners\SmokeRunner.class
