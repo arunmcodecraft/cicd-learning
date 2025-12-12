@@ -1,0 +1,25 @@
+name: Variable Test
+
+on:
+  workflow_dispatch:
+    inputs :
+      variableValue :
+        description : 'Enter Variable'
+        default : '1234'
+        required: true
+        type : string
+env:
+  firstVariable : 'first'
+  secondVariable : 'second'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: print vaiables
+      - run: echo "{firstVariable}"
+      - run: echo "{secondVariable}"
+      - run: echo "{variableValue}"
+
+

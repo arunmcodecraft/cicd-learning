@@ -8,6 +8,9 @@ on:
         default : 'ARUN'
         required: true
         type : string
+env:
+  firstVariable : 'first'
+  secondVariable : 'second'
 
 jobs:
   build:
