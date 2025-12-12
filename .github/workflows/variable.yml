@@ -8,6 +8,7 @@ on:
         default: '1234'
         required: true
         type: string
+
 env:
   firstVariable: 'first'
   secondVariable: 'second'
@@ -17,11 +18,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: print vaiables
-
-          - run: echo "{firstVariable}"
-          - run: echo "{secondVariable}"
-          - run: echo "{variableValue}"
-
-
-
+      - name: Print variables
+        run: |
+          echo "First Variable: ${{ env.firstVariable }}"
+          echo "Second Variable: ${{ env.secondVariable }}"
+          echo "Input Variable: ${{ github.event.inputs.variableValue }}"
