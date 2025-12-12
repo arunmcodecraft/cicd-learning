@@ -1,8 +1,13 @@
 name: Java-CI-CD-Maven
 
 on:
-  push:
   workflow_dispatch:
+    inputs :
+      arun :
+        description : 'enter name'
+        default : 'ARUN'
+        required: true
+        type : string
 
 jobs:
   build:
