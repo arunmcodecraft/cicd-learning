@@ -18,8 +18,9 @@ jobs:
 
     steps:
       - name: print vaiables
-      - run: echo "{firstVariable}"
-      - run: echo "{secondVariable}"
-      - run: echo "{variableValue}"
+        - run: echo "{firstVariable}"
+        - run: echo "{secondVariable}"
+        - run: echo "{variableValue}"
+
 
 
