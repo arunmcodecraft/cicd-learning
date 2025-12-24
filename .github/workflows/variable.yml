@@ -4,22 +4,27 @@ on:
   workflow_dispatch:
     inputs:
       variableValue:
-        description: 'Enter Variable'
-        default: '1234'
+        description: 'Enter stage or dev'
+        default: 'stage'
         required: true
-        type: string
 
 env:
-  firstVariable: 'first'
-  secondVariable: 'second'
-
+  stage: 'www.arun.stage.com'
+  dev: 'www.arun.dev.com'
+  qa : 'www.arun.qa.com'
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print variables
+      - name: Print URL based on input
         run: |
-          echo "First Variable: ${{ env.firstVariable }}"
-          echo "Second Variable: ${{ env.secondVariable }}"
-          echo "Input Variable: ${{ github.event.inputs.variableValue }}"
+          if [ "${{ github.event.inputs.variableValue }}" = "stage" ]; then
+            echo "URL: ${{ env.stage }}"
+          elif [ "${{ github.event.inputs.variableValue }}" = "dev" ]; then
+            echo "URL: ${{ env.dev }}"
+          else
+            echo "Invalid input: ${{ github.event.inputs.variableValue }}"
+          fi
+        env:
+          qa: 'arun'
