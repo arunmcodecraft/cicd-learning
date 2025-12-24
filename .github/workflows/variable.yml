@@ -28,4 +28,4 @@ jobs:
             echo "Invalid input: ${{ github.event.inputs.variableValue }}"
           fi
         env:
-          qa: 'arun'
+          stage: 'arun'
